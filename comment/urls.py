@@ -17,10 +17,5 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('legalize/', include('legalize.urls')),              # 认证
-    path('article/', include('article.urls')),        # 文章
-    path('comment/', include('comment.urls')),        # 评论点赞
-    path('site/', include('display.urls')),               # 页面显示
 
 ]
