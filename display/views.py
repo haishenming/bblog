@@ -5,8 +5,8 @@ from django.views.generic import View
 # Create your views here.
 
 
-class Index(View):
+class IndexView(View):
     """ index """
 
     def get(self, request):
-        return render(request, 'base.html')
+        return render(request, 'index.html')
