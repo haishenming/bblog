@@ -15,12 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url, include
+# from django.conf.urls import handler404, handler500
+
+from users import views
+import users
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('legalize/', include('legalize.urls')),              # 认证
+    url(r'^users/', include('users.urls')),
+    url(r'^users/', include('django.contrib.auth.urls')),     # 用户及认证
+    url(r'^$', views.index, name='index'),
     path('article/', include('article.urls')),                # 文章
     path('comment/', include('comment.urls')),                # 评论点赞
     path('site/', include('display.urls')),                   # 页面显示
 
 ]
+
+# handler404 = users.views.page_not_found
+# handler500 = users.views.page_error
