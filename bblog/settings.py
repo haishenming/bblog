@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+LOGIN_URL = "/users/login"
+
 # 指定自定义用户模型所在的位置
 AUTH_USER_MODEL = 'app_users.User'
 

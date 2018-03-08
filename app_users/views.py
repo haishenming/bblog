@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .forms import RegisterForm
 from .models import User
 
+
 def register(request):
     # 只有当请求为 POST 时，才表示用户提交了注册信息
     if request.method == 'POST':
@@ -32,24 +33,25 @@ def register(request):
     # 渲染模板
     # 如果用户正在访问注册页面，则渲染的是一个空的注册表单
     # 如果用户通过表单提交注册信息，但是数据验证不合法，则渲染的是一个带有错误信息的表单
-    return render(request, 'users/register.html', context={'form': form})
+    return render(request, 'users/register.html',
+                  context={'form': form})
 
 
 def index(request):
     return render(request, 'index.html')
 
 
-
 @login_required
 def home(requests, username=None):
     """ 用户家目录 """
-    user = User.objects.filter(username=username).first()
+    # user = User.objects.filter(username=username).first()
 
-    return render(requests, 'users/home.html', {"user": user})
+    return render(requests, 'users/home.html')
 
 
 def page_not_found(requests):
     return render(requests, 'error/404.html')
+
 
 def page_error(requests):
     return render(requests, 'error/500.html')
