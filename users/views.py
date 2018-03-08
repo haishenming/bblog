@@ -40,3 +40,6 @@ def index(request):
 
 def page_not_found(requests):
     return render(requests, 'error/404.html')
+
+def page_error(requests):
+    return render(requests, 'error/500.html')

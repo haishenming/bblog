@@ -32,5 +32,7 @@ urlpatterns = [
 
 ]
 
-# handler404 = users.views.page_not_found
-# handler500 = users.views.page_error
+handler404 = views.page_not_found
+
+# handler404 = users.
+handler500 = views.page_error
