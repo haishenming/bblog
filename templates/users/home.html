@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% if user %}
+    <dev class="container">
+        <h2>{{ user.username }}</h2>
+    </dev>
+{% else %}
+    <dev class="container">
+        <h2>未登录</h2>
+    </dev>
+{% endif %}
+{% endblock %}

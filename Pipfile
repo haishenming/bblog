@@ -7,7 +7,7 @@ url = "https://pypi.python.org/simple"
 
 [packages]
 
-django = "*"
+django = "==2.0.2"
 requests = "*"
 pymysql = "*"
 

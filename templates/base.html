@@ -41,7 +41,9 @@
           </ul>
           <p class="navbar-text navbar-right">
             {% if user.is_authenticated %}
-                你已登录，欢迎你：<a href="#">{{ user.username }}</a>
+                你已登录，欢迎你：<a href=
+                "{% url 'app_users:user_home' user.username %}"
+            >{{ user.username }}</a>
                     <a href="{% url 'logout' %}?next={{ request.path }}">注销登录</a>
                     <a href="{% url 'password_change' %}?next
                     ={{ request.path }}">修改密码</a>

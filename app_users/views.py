@@ -1,6 +1,7 @@
-
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import RegisterForm
+from .models import User
 
 def register(request):
     # 只有当请求为 POST 时，才表示用户提交了注册信息
@@ -36,6 +37,15 @@ def register(request):
 
 def index(request):
     return render(request, 'index.html')
+
+
+
+@login_required
+def home(requests, username=None):
+    """ 用户家目录 """
+    user = User.objects.filter(username=username).first()
+
+    return render(requests, 'users/home.html', {"user": user})
 
 
 def page_not_found(requests):
