@@ -28,5 +28,6 @@ urlpatterns = [
 
 ]
 
+
 handler404 = views.page_not_found
 handler500 = views.page_error
