@@ -29,7 +29,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 # 指定自定义用户模型所在的位置
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'app_users.User'
 
 # 发送邮件配置
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -43,10 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users',
-    'comment',
-    'display',
-    'article'
+    'app_users',
+    'app_comment',
+    'app_article'
 ]
 
 MIDDLEWARE = [

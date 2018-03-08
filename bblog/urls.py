@@ -16,23 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url, include
-# from django.conf.urls import handler404, handler500
-
-from users import views
-import users
+from app_users import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^users/', include('users.urls')),
+    url(r'^users/', include('app_users.urls')),
     url(r'^users/', include('django.contrib.auth.urls')),     # 用户及认证
     url(r'^$', views.index, name='index'),
-    path('article/', include('article.urls')),                # 文章
-    path('comment/', include('comment.urls')),                # 评论点赞
-    path('site/', include('display.urls')),                   # 页面显示
+    path('article/', include('app_article.urls')),                # 文章
+    path('comment/', include('app_comment.urls')),                # 评论点赞
 
 ]
 
 handler404 = views.page_not_found
-
-# handler404 = users.
 handler500 = views.page_error

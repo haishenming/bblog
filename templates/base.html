@@ -31,7 +31,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Brand</a>
+          <a class="navbar-brand" href="{% url 'index' %}">BBLOG</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
             <ul class="nav navbar-nav">
@@ -49,7 +49,7 @@
                 你还没有登录，请
                         <a href="{% url 'login' %}?next={{ request.path }}">登录</a>
                     或者
-                        <a href="{% url 'users:register' %}">注册</a>
+                        <a href="{% url 'app_users:register' %}">注册</a>
             {% endif %}
           </p>
         </div>
