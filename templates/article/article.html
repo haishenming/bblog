@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="article">
+            <div class="page-header article-title">
+                <h1>{{ article.title }}</h1>
+            </div>
+            <div class="article-content">
+                {{ article.content }}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
