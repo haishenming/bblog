@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-urlpatterns = [
+from .views import ArticleView
 
+urlpatterns = [
+    path('articles/', ArticleView.as_view(), name="article_view")
 ]

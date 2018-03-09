@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import RegisterForm
 from .models import User
+from app_article.models import Article
 
 
 def register(request):
@@ -44,9 +45,10 @@ def index(request):
 @login_required
 def home(requests, username=None):
     """ 用户家目录 """
-    # user = User.objects.filter(username=username).first()
+    this_user = User.objects.filter(username=username).first()
 
-    return render(requests, 'users/home.html')
+    return render(requests, 'users/home.html', {"this_user":
+                                                    this_user})
 
 
 def page_not_found(requests):

@@ -1,9 +1,30 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block heads %}
+{% endblock heads %}
 
 {% block content %}
-    <div class="container">
-        <h2>{{ user.username }}</h2>
+    <div class="container" id="userInfo">
+        <h2>{% verbatim %}{{ username }}{% endverbatim %}</h2>
+        <div>
+        </div>
+
+
     </div>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        Vue.config.delimiters = ["[[", "]]"];
+        var userInfo = new Vue({
+              el: '#userInfo',
+              data: {
+                username: '{{ this_user.username }}'
+              }
+            })
+    </script>
 
 {% endblock %}

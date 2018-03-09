@@ -17,7 +17,8 @@
             padding-top: 70px;
         }
     </style>
-    {% block style %}
+    <script src="{% static 'vue/vue.js' %}"></script>
+    {% block heads %}
     {% endblock %}
 </head>
 <body>
@@ -71,5 +72,12 @@
 
 <script src={% static "jquery/jquery-3.3.1.js" %}></script>
 <script src={% static "bootstrap/js/bootstrap.js" %}></script>
+
+
+{% block script %}
+
+{% endblock %}
+
 </body>
+
 </html>
