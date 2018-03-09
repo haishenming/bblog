@@ -10,14 +10,14 @@
         <h2>{{ this_user.username }}</h2>
         <div id="article">
             <div class="page-header">
-                <h3>文章</h3>
+                <h1>文章</h1>
             </div>
             <div class="jumbotron">
                 {% for article in articles %}
                     <div>
-                        <h4>
+                        <h2>
                             <a href="{% url 'article' article.title %}">{{ article.title }}</a>
-                        </h4>
+                        </h2>
                         {% if article.updated_time %}
                             <p>{{ article.updated_time }}</p>
                         {% endif %}
