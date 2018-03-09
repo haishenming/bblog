@@ -6,7 +6,7 @@ __pycache__/
 *$py.class
 
 .idea
-db.sqlite3
+#db.sqlite3
 
 # C extensions
 *.so
