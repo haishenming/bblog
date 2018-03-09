@@ -7,8 +7,24 @@
 
 {% block content %}
     <div class="container" id="userInfo">
-        <h2>{% verbatim %}{{ username }}{% endverbatim %}</h2>
-        <div>
+        <h2>{{ this_user.username }}</h2>
+        <div id="article">
+            <h3>文章</h3>
+            <div>
+                {% for article in articles %}
+                    <div>
+                        <h4>
+                            <a href="{% url 'article' article.title %}">{{ article.title }}</a>
+                        </h4>
+                        <p>{{ article.updated_time }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div id="comment">
+
+
         </div>
 
 
@@ -18,13 +34,7 @@
 
 {% block script %}
     <script>
-        Vue.config.delimiters = ["[[", "]]"];
-        var userInfo = new Vue({
-              el: '#userInfo',
-              data: {
-                username: '{{ this_user.username }}'
-              }
-            })
+
     </script>
 
 {% endblock %}

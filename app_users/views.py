@@ -45,10 +45,12 @@ def index(request):
 @login_required
 def home(requests, username=None):
     """ 用户家目录 """
-    this_user = User.objects.filter(username=username).first()
+    this_user = User.objects.filter(username=username).first()  # 用户信息
+    articles = Article.objects.filter(author__username=username)    # 用户文章信息
 
-    return render(requests, 'users/home.html', {"this_user":
-                                                    this_user})
+    return render(requests, 'users/home.html',
+                  {"this_user": this_user,
+                   "articles": articles})
 
 
 def page_not_found(requests):

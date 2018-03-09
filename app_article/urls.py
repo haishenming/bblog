@@ -16,8 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from .views import ArticleView
+from . import views
 
 urlpatterns = [
-    path('articles/', ArticleView.as_view(), name="article_view")
+    path('article/<title>', views.article, name="article")
 ]
