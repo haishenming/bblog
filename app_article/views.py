@@ -34,6 +34,8 @@ def create(requests):
             article.save()
 
             return render(requests, 'article/create_done.html')
+        else:
+            raise ValueError(article_form.errors)
 
     # elif requests.method == "GET":
         # 返回创建页面
