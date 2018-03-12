@@ -5,6 +5,7 @@ from datetime import datetime
 
 class Article(models.Model):
     """ 文章 """
+
     id = models.IntegerField(primary_key=True)
     title = models.CharField(verbose_name="标题", max_length=128,
                              null=False)
@@ -12,8 +13,13 @@ class Article(models.Model):
     author = models.ForeignKey(verbose_name="作者", to='app_users.User',
                                on_delete=models.CASCADE)  # 文章作者
     tags = models.ManyToManyField(verbose_name="标签", to='Tag')
+
+    def get_author_id(self):
+        return self.author
+
     category = models.ForeignKey(verbose_name="类别", to="Category",
-                                 on_delete=models.SET_NULL, null=True)
+                                 on_delete=models.SET_NULL, null=True,
+                                 limit_choices_to={})
 
     created_time = models.DateTimeField(verbose_name="创建时间", null=False,
                                    auto_now_add=True)
@@ -30,6 +36,10 @@ class Tag(models.Model):
     created_time = models.DateTimeField(verbose_name="创建时间", null=False,
                                         auto_now=True)
 
+    def __str__(self):
+        return self.word
+
+
 class Category(models.Model):
     """ 文章分类 """
     id = models.IntegerField(primary_key=True)
@@ -39,4 +49,7 @@ class Category(models.Model):
 
     created_time = models.DateTimeField(verbose_name="创建时间", null=False,
                                         auto_now=True)
+
+    def __str__(self):
+        return self.word
 

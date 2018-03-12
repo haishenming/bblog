@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.views.generic import View
 from django.http import HttpResponse
 from app_article.models import Article
+from .forms import ArticeleForm
 
 # Create your views here.
 
@@ -20,6 +21,7 @@ def article(requests, title):
 
 def create(requests):
     """ 创建文章 """
+    user = requests.user
     if requests.method == "POST":
         # 有文章数据上传
         user = requests.user
@@ -27,4 +29,6 @@ def create(requests):
 
     elif requests.method == "GET":
         # 返回创建页面
-        return render(requests, 'article/create.html')
+        form = ArticeleForm(user)
+
+        return render(requests, 'article/create.html', {"form": form})

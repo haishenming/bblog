@@ -20,5 +20,5 @@ from . import views
 
 urlpatterns = [
     path('article/<title>', views.article, name="article"),
-    path('article/create', views.create, name="article_create"),
+    path('create/', views.create, name="article_create"),
 ]
