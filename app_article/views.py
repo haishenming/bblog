@@ -10,12 +10,12 @@ from .forms import ArticeleForm
 
 def article(requests, title):
     """ 文章 """
-    article = Article.objects.filter(title=title).first()
-    article.content = markdown.markdown(article.content)
+    this_article = Article.objects.filter(title=title).first()
+    this_article.content = markdown.markdown(this_article.content)
 
     return render(requests, "article/article.html",
                   {
-                      "article": article
+                      "article": this_article
                   })
 
 
