@@ -12,13 +12,16 @@ from django import forms
 
 class ArticeleForm(forms.ModelForm):
     """ 文章表单 """
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['content'].widget = AdminPagedownWidget()
+        self.fields['tags'].required = False
 
     class Meta:
         model = Article
         exclude = []
+
 
 class ArticleAdmin(admin.ModelAdmin):
     form = ArticeleForm
