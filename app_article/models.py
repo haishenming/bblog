@@ -14,9 +14,6 @@ class Article(models.Model):
                                on_delete=models.CASCADE)  # 文章作者
     tags = models.ManyToManyField(verbose_name="标签", to='Tag')
 
-    def get_author_id(self):
-        return self.author
-
     category = models.ForeignKey(verbose_name="类别", to="Category",
                                  on_delete=models.SET_NULL, null=True,
                                  limit_choices_to={})
@@ -25,6 +22,9 @@ class Article(models.Model):
                                    auto_now_add=True)
     updated_time = models.DateTimeField(verbose_name="修改时间",
                                        null=True, auto_now=True)
+
+    def __str__(self):
+        return "{}-{}".format(self.title, self.author.username)
 
 
 class Tag(models.Model):
