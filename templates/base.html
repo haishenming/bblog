@@ -24,41 +24,46 @@
 <body>
 <div>
     <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
-            <span class="sr-only">BBLOG</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="{% url 'index' %}">BBLOG</a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
-            <ul class="nav navbar-nav">
-            <li class="active"><a href="{% url 'index' %}">Home</a></li>
-{#            <li><a href="#about">About</a></li>#}
-{#            <li><a href="#contact">Contact</a></li>#}
-          </ul>
-          <p class="navbar-text navbar-right">
-            {% if user.is_authenticated %}
-                你已登录，欢迎你：<a href=
-                "{% url 'user_home' user.username %}"
-            >{{ user.username }}</a>
-                    <a href="{% url 'logout' %}?next={{ request.path }}">注销登录</a>
-                    <a href="{% url 'password_change' %}?next
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-5"
+                        aria-expanded="false">
+                    <span class="sr-only">BBLOG</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand"
+                   href="{% url 'index' %}">BBLOG</a>
+            </div>
+            <div class="collapse navbar-collapse"
+                 id="bs-example-navbar-collapse-5">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a
+                            href="{% url 'index' %}">Home</a></li>
+                    {#            <li><a href="#about">About</a></li>#}
+                    {#            <li><a href="#contact">Contact</a></li>#}
+                </ul>
+                <p class="navbar-text navbar-right">
+                    {% if user.is_authenticated %}
+                        你已登录，欢迎你：<a href=
+                                            "{% url 'app_users:user_home' user.username %}"
+                    >{{ user.username }}</a>
+                        <a href="{% url 'logout' %}?next={{ request.path }}">注销登录</a>
+                        <a href="{% url 'password_change' %}?next
                     ={{ request.path }}">修改密码</a>
-                    <a href="
-                    {% url 'article_create' %}">创建文章</a>
-            {% else %}
-                你还没有登录，请
+                        <a href="{% url 'app_article:article_create' %}">创建文章</a>
+                    {% else %}
+                        你还没有登录，请
                         <a href="{% url 'login' %}?next={{ request.path }}">登录</a>
-                    或者
-                        <a href="{% url 'register' %}">注册</a>
-            {% endif %}
-          </p>
+                        或者
+                        <a href="{% url 'app_users:register' %}">注册</a>
+                    {% endif %}
+                </p>
+            </div>
         </div>
-      </div>
     </nav>
 
 
@@ -74,12 +79,6 @@
 
 <script src={% static "jquery/jquery-3.3.1.js" %}></script>
 <script src={% static "bootstrap/js/bootstrap.js" %}></script>
-
-
-{% block script %}
-
-{% endblock %}
-
 </body>
 
 </html>
