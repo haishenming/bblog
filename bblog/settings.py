@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pagedown',
     # 'django.contrib.',
     'app_users',
     'app_comment',

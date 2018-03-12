@@ -1,5 +1,7 @@
 import json
 
+import markdown
+
 from django.shortcuts import render
 from django.views.generic import View
 from django.http import HttpResponse
@@ -11,7 +13,7 @@ from .forms import ArticeleForm
 def article(requests, title):
     """ 文章 """
     article = Article.objects.filter(title=title).first()
-
+    article.content = markdown.markdown(article.content)
 
     return render(requests, "article/article.html",
                   {
@@ -24,11 +26,18 @@ def create(requests):
     user = requests.user
     if requests.method == "POST":
         # 有文章数据上传
-        user = requests.user
-        article_data = requests.POST
+        article_form = ArticeleForm(user, requests.POST)
 
-    elif requests.method == "GET":
+        if article_form.is_valid():
+            article = article_form.save(commit=False)
+            article.author = user
+            article.save()
+
+            return render(requests, 'article/create_done.html')
+
+    # elif requests.method == "GET":
         # 返回创建页面
-        form = ArticeleForm(user)
+    else:
+        article_form = ArticeleForm(user)
 
-        return render(requests, 'article/create.html', {"form": form})
+    return render(requests, 'article/create.html', {"form": article_form})

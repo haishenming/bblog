@@ -1,12 +1,63 @@
 {% extends 'base.html' %}
+{% load myfilters %}
 
 {#文章创建页面#}
 
 {% block content %}
-
-    <form action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    </form>
+    <div class="container">
+        <div class="page-header">
+            <h2>创建文章</h2>
+        </div>
+        <form action="{% url 'article_create' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="exampleInputEmail1">
+                    {{ form.title.label }}</label>
+                {{ form.title | add_class:"form-control" }}
+                {{ form.title.errors }}
+                {% if form.title.help_text %}
+                    <p class="help text-small
+                                text-muted">
+                        {{ form.title.help_text|safe }}</p>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">
+                    {{ form.content.label }}</label>
+                {{ form.content | add_class:"form-control" }}
+                {{ form.content.errors }}
+                {% if form.content.help_text %}
+                    <p class="help text-small
+                                text-muted">
+                        {{ form.content.help_text|safe }}</p>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">
+                    {{ form.category.label }}</label>
+                {{ form.category | add_class:"form-control" }}
+                {{ form.category.errors }}
+                {% if form.category.help_text %}
+                    <p class="help text-small
+                                text-muted">
+                        {{ form.category.help_text|safe }}</p>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">
+                    {{ form.tags.label }}</label>
+                {{ form.tags | add_class:"form-control" }}
+                {{ form.tags.errors }}
+                {% if form.tags.help_text %}
+                    <p class="help text-small
+                                text-muted">
+                        {{ form.tags.help_text|safe }}</p>
+                {% endif %}
+            </div>
+            <button type="submit"
+                    class="btn btn-primary btn-block">提交
+            </button>
+        </form>
+    </div>
 
 {% endblock %}

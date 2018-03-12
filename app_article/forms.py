@@ -1,4 +1,6 @@
 from django import forms
+from pagedown.widgets import AdminPagedownWidget
+
 from .models import Article, Category, Tag
 
 
@@ -11,6 +13,8 @@ class ArticeleForm(forms.ModelForm):
             user=user)
         self.fields['tags'].queryset = Tag.objects.filter(
             user=user)
+        self.fields['tags'].required = False
+        self.fields['content'].widget = AdminPagedownWidget()
 
     class Meta:
         model = Article
