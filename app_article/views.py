@@ -3,8 +3,6 @@ import json
 import markdown
 
 from django.shortcuts import render
-from django.views.generic import View
-from django.http import HttpResponse
 from app_article.models import Article
 from .forms import ArticeleForm
 
