@@ -1,5 +1,7 @@
 from django.db import models
 from datetime import datetime
+
+
 # Create your models here.
 
 
@@ -19,9 +21,9 @@ class Article(models.Model):
                                  limit_choices_to={})
 
     created_time = models.DateTimeField(verbose_name="创建时间", null=False,
-                                   auto_now_add=True)
+                                        auto_now_add=True)
     updated_time = models.DateTimeField(verbose_name="修改时间",
-                                       null=True, auto_now=True)
+                                        null=True, auto_now=True)
 
     def __str__(self):
         return "{}-{}".format(self.title, self.author.username)
@@ -32,7 +34,7 @@ class Tag(models.Model):
     id = models.IntegerField(primary_key=True)
     word = models.CharField(max_length=64, null=False, default="")
     user = models.ForeignKey(verbose_name="作者", to='app_users.User',
-                               on_delete=models.CASCADE)
+                             on_delete=models.CASCADE)
     created_time = models.DateTimeField(verbose_name="创建时间", null=False,
                                         auto_now=True)
 
@@ -52,4 +54,3 @@ class Category(models.Model):
 
     def __str__(self):
         return self.word
-
