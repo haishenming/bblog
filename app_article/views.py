@@ -27,9 +27,9 @@ def create(requests):
         article_form = ArticeleForm(user, requests.POST)
 
         if article_form.is_valid():
-            article = article_form.save(commit=False)
-            article.author = user
-            article.save()
+            this_article = article_form.save(commit=False)
+            this_article.author = user
+            this_article.save()
 
             return render(requests, 'article/create_done.html')
         else:
