@@ -24,7 +24,6 @@ urlpatterns = [
     url(r'^users/', include('django.contrib.auth.urls')),     # 用户及认证
     url(r'^$', views.index, name='index'),
     path('article/', include('app_article.urls')),                # 文章
-    path('comment/', include('app_comment.urls')),                # 评论点赞
 
 ]
 

@@ -54,3 +54,30 @@ class Category(models.Model):
 
     def __str__(self):
         return self.word
+
+
+class Comment(models.Model):
+    """ 文章评论 """
+    id = models.IntegerField(primary_key=True)
+    comment = models.CharField(max_length=256, verbose_name="评论内容",
+                               null=False)
+    user = models.ForeignKey(verbose_name="评论者", to='app_users.User',
+                             on_delete=models.CASCADE)
+    article = models.ForeignKey(verbose_name="评论对象",
+                                to='Article',
+                                on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "{}-{}".format(self.user.username, self.article.title)
+
+class Like(models.Model):
+    """ 文章评论 """
+    id = models.IntegerField(primary_key=True)
+    user = models.ForeignKey(verbose_name="点赞者", to='app_users.User',
+                             on_delete=models.CASCADE)
+    article = models.ForeignKey(verbose_name="点赞对象",
+                                to='Article',
+                                on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "{}-{}".format(self.user.username, self.article.title)
