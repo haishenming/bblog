@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'pagedown',
     # 'django.contrib.',
     'app_users',
-    'app_comment',
+    # 'app_comment',    # 原评论合并到文章app
     'app_article'
 ]
 
